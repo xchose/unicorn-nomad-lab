@@ -1,18 +1,17 @@
-===================
-Nomad lab exabmple
-==================
+=================
+Salt Vagrant Demo
+=================
 
-Nomad from Hashicorp example of implementation for using of Unicorn project.
-More info about project: https://www.nomadproject.io/
+A Salt LAB configured for PosAM in  Vagrant. Vagrant file will create one
+SaltMater and 2 SaltMinions with configured network and keys for salt
+communication.
 
-In this lab simulation will be installd like simple cluster with 1 server and
-2 clients running into vagrant VM. Access at UI http://localhost:4646/ui/jobs 
 
 Instructions
 ============
 
-
-
+Run the following commands in a terminal. Git, VirtualBox and Vagrant must
+already be installed.
 
 .. code-block:: bash
 
@@ -37,21 +36,22 @@ using Salt.
     vagrant ssh master
     sudo salt \* test.ping
 
-Jobs
+Lab Info
 =========
-We have only one jobs configured in conf folder. So you can easily run like:
+All machines are configured at lab network 192.168.50.*. Master is addressed as
+192.168.50.10  and minions have incremental IP.
 
-Register:
+Machines are build at Centos7.
+
+Basic Vagrant command
+=====================
+How to start list connect and destroy:
+
 .. code-block:: bash
 
-  mad:~/conf$ nomad run example.nomad
-    ==> Monitoring evaluation "6cd788d6"
-      Evaluation triggered by job "example"
-      Evaluation within deployment: "7116824b"
-      Allocation "72de221e" created: node "fafe7111", group "jboss"
-      Allocation "0ba8c710" created: node "6a5d1be6", group "jboss"
-      Allocation "6f965a1f" created: node "6a5d1be6", group "jboss"
-      Evaluation status changed: "pending" -> "complete"
-  ==> Evaluation "6cd788d6" finished with status "complete"
+    vagrant status
+    vagrant up 
+    vagrant ssh <name of machine>
+    vagrant destroy
 
-Plan
+
