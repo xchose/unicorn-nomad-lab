@@ -17,22 +17,21 @@ Instructions
 
 This will install vagrant VM with predifned nomad environment and logon. 
 .. code-block:: bash
-
-    https://git.posam.sk/cholewam/unicorn-nomad-lab
-    cd unicorn-nomad-lab
-    vagrant plugin install vagrant-vbguest
-    vagrant up
-    vagrant ssh
+   https://git.posam.sk/cholewam/unicorn-nomad-lab
+   cd unicorn-nomad-lab
+   vagrant plugin install vagrant-vbguest
+   vagrant up
+   vagrant ssh
 
 Now you can start server and 2 clients like:
 
 .. code-block:: bash
     vagrant@nomad:~$ startServer.sh
-  Starting client 1 ...n
-  ==> WARNING: Bootstrap mode enabled! Potentially unsafe operation.
-    Loaded configuration from /home/vagrant/conf/server.hcl
-  ==> Starting Nomad agent...
-  ==> Nomad agent configuration:
+    Starting client 1 ...n
+    ==> WARNING: Bootstrap mode enabled! Potentially unsafe operation.
+      Loaded configuration from /home/vagrant/conf/server.hcl
+    ==> Starting Nomad agent...
+    ==> Nomad agent configuration:
 
                 Client: false
              Log Level: DEBUG
@@ -40,7 +39,7 @@ Now you can start server and 2 clients like:
                 Server: true
                Version: 0.7.0
 
-  ==> Nomad agent started! Log data will stream in below:g
+     ==> Nomad agent started! Log data will stream in below:g
 
 Jobs
 =========
