@@ -18,11 +18,11 @@ Instructions
 This will install vagrant VM with predifned nomad environment and logon. 
 .. code-block:: bash
 
-   https://git.posam.sk/cholewam/unicorn-nomad-lab
-   cd unicorn-nomad-lab
-   vagrant plugin install vagrant-vbguest
-   vagrant up
-   vagrant ssh
+    https://git.posam.sk/cholewam/unicorn-nomad-lab
+    cd unicorn-nomad-lab
+    vagrant plugin install vagrant-vbguest
+    vagrant up
+    vagrant ssh
 
 Now you can start server and 2 clients like:
 
