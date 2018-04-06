@@ -81,13 +81,13 @@ SCRIPT
 
 Vagrant.configure(2) do |config|
   config.vm.box = "bento/ubuntu-16.04" # 16.04 LTS
-  config.vm.hostname = "nomad"
+  config.vm.hostname = "nomad.posam.lab"
   config.vm.provision "shell", inline: $script, privileged: false
   config.vm.provision "docker" # Just install it
 
   #Sync folder with configs for Nomad
-  config.vm.synced_folder "conf/bin/", "/home/vagrant/bin"
-  config.vm.synced_folder "conf/nomad_conf", "/home/vagrant/"
+  config.vm.synced_folder "nomad_setup/nomad_conf", "/home/vagrant/conf"
+  config.vm.synced_folder "nomad_setup/nomad_bin", "/home/vagrant/bin"
 
   # Expose the nomad api and ui to the host
   config.vm.network "forwarded_port", guest: 4646, host: 4646, auto_correct: true
@@ -100,6 +100,7 @@ Vagrant.configure(2) do |config|
   # Increase memory for Virtualbox
   config.vm.provider "virtualbox" do |vb|
         vb.memory = "1024"
+        vb.name = "nomad"
   end
 
   # Increase memory for VMware
