@@ -55,20 +55,55 @@ Then start client1 and client2.
 
 Jobs
 =========
-We have only one jobs configured in conf folder. So you can easily run like:
+We have only one jobs configured in conf folder. This will run 3 Docker containesr with Jboss. So you can easily run like:
 
 Register:
 
 .. code-block:: bash
 
-  mad:~/conf$ nomad run example.nomad
-    ==> Monitoring evaluation "6cd788d6"
-      Evaluation triggered by job "example"
-      Evaluation within deployment: "7116824b"
-      Allocation "72de221e" created: node "fafe7111", group "jboss"
-      Allocation "0ba8c710" created: node "6a5d1be6", group "jboss"
-      Allocation "6f965a1f" created: node "6a5d1be6", group "jboss"
-      Evaluation status changed: "pending" -> "complete"
-  ==> Evaluation "6cd788d6" finished with status "complete"
+     vagrant@nomad:~/conf$ nomad run  jboss.nomad
+        ==> Monitoring evaluation "fa77b4b8"
+        Evaluation triggered by job "example"
+        Evaluation within deployment: "2ce8197c"
+        Allocation "0d27cabe" created: node "e9ef7eef", group "jboss"
+        Allocation "6a04ff57" created: node "735b088c", group "jboss"
+        Allocation "d25b4026" created: node "735b088c", group "jboss"
+        Evaluation status changed: "pending" -> "complete"
+     ==> Evaluation "fa77b4b8" finished with status "complete"
 
 Plan
+
+.. code-block:: bash
+
+
+    vagrant@nomad:~/conf$ nomad plan jboss.nomad
+    + Job: "jboss"
+    + Task Group: "jboss" (3 create)
+    + Task: "jboss" (forces create)
+
+    Scheduler dry-run:
+    - All tasks successfully allocated.
+
+    Job Modify Index: 0
+    To submit the job with version verification run:
+
+    nomad run -check-index 0 jboss.nomad
+
+    When running the job with the check-index flag, the job will only be run if the
+    server side version matches the job modify index returned. If the index has
+    changed, another user has modified the job and the plan's results are
+    potentially invalid.
+
+A finally run:
+
+.. code-block:: bash
+
+   vagrant@nomad:~/conf$ nomad run -check-index 0 jboss.nomad
+    ==> Monitoring evaluation "06caf6e2"
+    Evaluation triggered by job "jboss"
+    Evaluation within deployment: "cb8f3379"
+    Allocation "2ec76c95" created: node "d2a44cae", group "jboss"
+    Allocation "53419984" created: node "d2a44cae", group "jboss"
+    Allocation "af02c31f" created: node "a858cbd5", group "jboss"
+    Evaluation status changed: "pending" -> "complete"
+    ==> Evaluation "06caf6e2" finished with status "complete" 
