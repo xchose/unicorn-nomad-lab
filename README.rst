@@ -114,6 +114,7 @@ Check
 You can check by console or URL http://localhost:4646/ui/jobs
 
 .. code-block:: bash
+    
     vagrant@nomad:~/conf$ nomad status
     ID     Type     Priority  Status   Submit Date
     jboss  service  50        running  04/06/18 09:54:07 UTC
