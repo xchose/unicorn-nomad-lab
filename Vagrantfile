@@ -103,7 +103,7 @@ Vagrant.configure(2) do |config|
         vb.name = "nomad"
   end
 
-  # Increase memory for VMware
+  # Increase memory for VMwarei aa
   ["vmware_fusion", "vmware_workstation"].each do |p|
     config.vm.provider p do |v|
       v.vmx["memsize"] = "1024"
